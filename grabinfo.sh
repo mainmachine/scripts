@@ -4,7 +4,7 @@ distro="$(lsb_release -d | awk '{print $2,$3,$4,$5,$6,$7,$8}')"
 kernel="$(uname -r)"
 cinvers="$(cinnamon --version | awk '{print $2}')"
 gpu="$(sudo lshw -c display | awk -F: '/product/{print $2}')"
-gpualt="$(lspci | grep -i vga)"
+gpualt="$(lspci -nn | grep -i vga)"
 glxnfo="$(DISPLAY=:0 glxinfo | awk '/OpenGL vendor string/{print $4}')"
 screensleep="$(dconf read /org/cinnamon/settings-daemon/plugins/power/sleep-display-ac)"
 
